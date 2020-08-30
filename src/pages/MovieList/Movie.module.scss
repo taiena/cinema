@@ -1,0 +1,21 @@
+.Movie {
+  width: 300px;
+  height: 100px;
+  border: 1px solid grey;
+}
+
+.Movie:hover {
+  background-color: #e2e2e2;
+  cursor: pointer;
+}
+
+.MovieList {
+  background-color: rgb(247, 204, 234);
+  display: flex;
+  flex-direction: column;
+}
+
+.MovieListItems {
+  margin: 0 auto;
+  background-color: rgb(204, 204, 247);
+}
