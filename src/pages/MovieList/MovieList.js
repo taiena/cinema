@@ -9,7 +9,8 @@ export default class MovieList extends Component {
   };
 
   componentDidMount() {
-    fetch("http://127.0.0.1:4000/films")
+    const url = "http://localhost:4000";
+    fetch(url + "/films")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -40,7 +41,7 @@ export default class MovieList extends Component {
           <h1>Movie list page</h1>
           <ul>
             {items.map((item) => (
-              <li className={classes.MovieListItems} key={item.name}>
+              <li className={classes.MovieListItems} key={item.id}>
                 {item.title}
                 {item.production_year}
               </li>

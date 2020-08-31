@@ -8,7 +8,8 @@ export default class ActorsList extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:4000/actors")
+    const url = "http://localhost:4000";
+    fetch(url + "/actors")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -39,7 +40,7 @@ export default class ActorsList extends Component {
           <h1>Actors list page</h1>
           <ul>
             {items.map((item) => (
-              <li key={item.name}>{item.name}</li>
+              <li key={item.id}>{item.name}</li>
             ))}
           </ul>
         </div>
