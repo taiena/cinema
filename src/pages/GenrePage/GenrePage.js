@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import classes from "./Movie.module.scss";
+import MovieList from "./MovieList";
 
-export default class MovieList extends Component {
+export default class GenrePage extends Component {
   state = {
     error: null,
     isLoaded: false,
@@ -37,16 +38,9 @@ export default class MovieList extends Component {
       return <p>Loading...</p>;
     } else {
       return (
-        <div className={classes.MovieList}>
-          <h1>Movie list page</h1>
-          <ul>
-            {items.map((item) => (
-              <li className={classes.MovieListItems} key={item.id}>
-                {item.title}
-                {item.production_year}
-              </li>
-            ))}
-          </ul>
+        <div>
+          <h1>Films list page</h1>
+          <MovieList items={items} />
         </div>
       );
     }

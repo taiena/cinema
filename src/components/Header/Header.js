@@ -13,8 +13,8 @@ export default class Header extends Component {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/movielist" exact activeClassName="active">
-              Movie list
+            <NavLink to="/genrepage" exact activeClassName="active">
+              Genre Page
             </NavLink>
           </li>
           <li>

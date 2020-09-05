@@ -3,8 +3,8 @@ import "./App.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Main from "./pages/Main/Main";
-import MovieList from "./pages/MovieList/MovieList";
-import ActorsList from "./pages/MovieList/ActorsList";
+import GenrePage from "./pages/GenrePage/GenrePage";
+import ActorsList from "./pages/GenrePage/ActorsList";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <main>
           <Switch>
             <Route path={"/"} exact component={Main} />
-            <Route path={"/movielist"} exact component={MovieList} />
+            <Route path={"/genrepage"} exact component={GenrePage} />
             <Route path={"/actorslist"} exact component={ActorsList} />
             <Redirect to={"/"} />
           </Switch>

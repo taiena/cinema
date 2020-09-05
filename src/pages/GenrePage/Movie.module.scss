@@ -9,13 +9,16 @@
   cursor: pointer;
 }
 
-.MovieList {
+.GenrePage {
   background-color: rgb(247, 204, 234);
   display: flex;
   flex-direction: column;
 }
 
 .MovieListItems {
+  width: 500px;
+  padding: 10px;
   margin: 0 auto;
+  margin-bottom: 10px;
   background-color: rgb(204, 204, 247);
 }
