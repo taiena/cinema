@@ -38,7 +38,7 @@ export default class GenrePage extends Component {
       return <p>Loading...</p>;
     } else {
       return (
-        <div>
+        <div className={classes.GenrePage}>
           <h1>Genre page</h1>
           <MovieList items={items} />
         </div>
