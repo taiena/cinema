@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Main from "./pages/Main/Main";
 import GenrePage from "./pages/GenrePage/GenrePage";
-import ActorsList from "./pages/GenrePage/ActorsList";
+import ActorsList from "./components/ActorsList/ActorsList";
 
 function App() {
   return (

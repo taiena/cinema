@@ -1,9 +1,9 @@
 import React from "react";
-import classes from "./Movie.module.scss";
+import classes from "./MovieItem.module.scss";
 
 export default function MovieItem({ item }) {
   return (
-    <li className={classes.MovieListItems}>
+    <li className={classes.MovieItem}>
       {item.title}
       {item.production_year}
     </li>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import classes from "./Movie.module.scss";
-import MovieList from "./MovieList";
+import classes from "./GenrePage.module.scss";
+import MovieList from "../../components/MovieList/MovieList";
 
 export default class GenrePage extends Component {
   state = {
@@ -39,7 +39,7 @@ export default class GenrePage extends Component {
     } else {
       return (
         <div>
-          <h1>Films list page</h1>
+          <h1>Genre page</h1>
           <MovieList items={items} />
         </div>
       );
