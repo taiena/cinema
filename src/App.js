@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Main from "./pages/Main/Main";
 import GenrePage from "./pages/GenrePage/GenrePage";
 import ActorsList from "./components/ActorsList/ActorsList";
+import MoviePage from "./pages/MoviePage/MoviePage";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
             <Route path={"/"} exact component={Main} />
             <Route path={"/genrepage"} exact component={GenrePage} />
             <Route path={"/actorslist"} exact component={ActorsList} />
+            <Route path={"/movies/:title"} exact component={MoviePage} />
+
             <Redirect to={"/"} />
           </Switch>
         </main>

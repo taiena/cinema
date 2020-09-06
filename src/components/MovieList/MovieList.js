@@ -3,10 +3,17 @@ import MovieItem from "./MovieItem/MovieItem";
 
 export default function MovieList(props) {
   return (
-    <ul>
-      {props.items.map((item) => {
-        return <MovieItem item={item} />;
+    <div>
+      {props.items.map((item, index) => {
+        return (
+          <MovieItem
+            title={item.title}
+            title_original={item.title_original}
+            production_year={item.production_year}
+            key={index}
+          />
+        );
       })}
-    </ul>
+    </div>
   );
 }
