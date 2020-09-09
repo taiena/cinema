@@ -26,8 +26,13 @@ export default class GenreMenu extends Component {
         <ul>
           {items.map((item) => (
             <li key={item.id}>
-              <NavLink to="/genrepage" exact activeClassName="active">
+              <NavLink
+                to={{ pathname: "/genrepage", state: { data: item.name } }}
+                exact
+                activeClassName="active"
+              >
                 {item.name}
+                {item.id}
               </NavLink>
             </li>
           ))}

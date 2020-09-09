@@ -10,8 +10,11 @@ export default class GenrePage extends Component {
   };
 
   componentDidMount() {
+    //  этот параметр (название жанра) передался при переходе по ссылке
+    const genreUrl = this.props.location.state.data;
+    console.log(genreUrl);
     const url = "http://localhost:4000";
-    fetch(url + "/films?genre=%D0%92%D0%BE%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9")
+    fetch(url + "/films?genre=" + genreUrl)
       .then((res) => res.json())
       .then(
         (result) => {
@@ -38,7 +41,7 @@ export default class GenrePage extends Component {
     } else {
       return (
         <div className={classes.GenrePage}>
-          <h1>Genre page</h1>
+          <h1>{this.props.location.state.data}</h1>
           <MovieList items={items} />
         </div>
       );
