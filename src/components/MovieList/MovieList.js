@@ -11,6 +11,7 @@ export default function MovieList(props) {
             title_original={item.title_original}
             production_year={item.production_year}
             key={index}
+            id={item.id}
           />
         );
       })}
