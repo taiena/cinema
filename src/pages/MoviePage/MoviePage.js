@@ -1,34 +1,22 @@
-// import React, { Component } from "react";
-
-// export default class MoviePage extends Component {
-//   render() {
-//     return (
-//       <div>
-//         <h1>Movie page</h1>
-//         <h2>{this.props.match.params.title}</h2>
-//       </div>
-//     );
-//   }
-// }
-
 import React, { Component } from "react";
 
 export default class MoviePage extends Component {
   state = {
     error: null,
     isLoaded: false,
-    items: [],
+    item: {},
   };
 
   componentDidMount() {
     const url = "http://localhost:4000";
-    fetch(url + "/films")
+    const filmUrl = this.props.match.params.title;
+    fetch(url + "/films/" + filmUrl)
       .then((res) => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            items: result.films,
+            item: result.film,
           });
         },
         (error) => {
@@ -40,9 +28,8 @@ export default class MoviePage extends Component {
       );
   }
   render() {
-    const filmId = this.props.match.params.title;
-    const { error, isLoaded, items } = this.state;
-    console.log(items);
+    const { error, isLoaded, item } = this.state;
+
     if (error) {
       return <p>Error {error.message}</p>;
     } else if (!isLoaded) {
@@ -51,10 +38,8 @@ export default class MoviePage extends Component {
       return (
         <div>
           <h1>Movie page</h1>
-          <h2>{filmId}</h2>
-          <div>{items[0].title}</div>
-          <div>{items[0].production_year}</div>
-          <div>{items[0].id}</div>
+          <h2>{item.title}</h2>
+          <div>{item.production_year}</div>
         </div>
       );
     }
