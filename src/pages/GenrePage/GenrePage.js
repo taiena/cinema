@@ -11,7 +11,7 @@ export default class GenrePage extends Component {
 
   componentDidMount() {
     const url = "http://localhost:4000";
-    fetch(url + "/films")
+    fetch(url + "/films?genre=%D0%92%D0%BE%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -31,7 +31,6 @@ export default class GenrePage extends Component {
 
   render() {
     const { error, isLoaded, items } = this.state;
-
     if (error) {
       return <p>Error {error.message}</p>;
     } else if (!isLoaded) {
