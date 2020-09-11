@@ -7,15 +7,13 @@ export default class GenrePage extends Component {
     error: null,
     isLoaded: false,
     items: [],
+    genreUrl: this.props.match.params.name,
   };
 
   componentDidMount() {
-    //  этот параметр (название жанра) передался при переходе по ссылке
-    // let genreUrl = this.props.location.state.data;
-    const genreUrl = this.props.match.params.name;
-    console.log(genreUrl);
+    // console.log("mount state: ", this.state.genreUrl);
     const url = "http://localhost:4000";
-    fetch(url + "/films?genre=" + genreUrl)
+    fetch(url + "/films?genre=" + this.state.genreUrl)
       .then((res) => res.json())
       .then(
         (result) => {
@@ -33,6 +31,34 @@ export default class GenrePage extends Component {
       );
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    // console.log("Update state: ", this.state.genreUrl);
+    // console.log("Update props: ", this.props.match.params.name);
+    // console.log("PrevState: ", prevState);
+    // console.log("PrevProps: ", prevProps);
+
+    if (prevState.genreUrl !== this.props.match.params.name) {
+      const url = "http://localhost:4000";
+      fetch(url + "/films?genre=" + this.state.genreUrl)
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            this.setState({
+              isLoaded: true,
+              items: result.films,
+              genreUrl: this.props.match.params.name,
+            });
+          },
+          (error) => {
+            this.setState({
+              isLoaded: true,
+              error,
+            });
+          }
+        );
+    }
+  }
+
   render() {
     const { error, isLoaded, items } = this.state;
     if (error) {
@@ -43,7 +69,7 @@ export default class GenrePage extends Component {
       return (
         <div className={classes.GenrePage}>
           {/* <h1>{this.props.location.state.data}</h1> */}
-          <h1>{this.props.match.params.name}</h1>
+          <h1>{this.state.genreUrl}</h1>
           <MovieList items={items} />
         </div>
       );
