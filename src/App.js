@@ -19,7 +19,7 @@ function App() {
             <Route path={"/"} exact component={Main} />
             <Route path={"/genrepage"} exact component={GenrePage} />
             <Route path={"/actorslist"} exact component={ActorsList} />
-            <Route path={"/movies/:title"} exact component={MoviePage} />
+            <Route path={"/movies/:id"} exact component={MoviePage} />
 
             <Redirect to={"/"} />
           </Switch>

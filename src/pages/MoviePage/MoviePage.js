@@ -9,7 +9,7 @@ export default class MoviePage extends Component {
 
   componentDidMount() {
     const url = "http://localhost:4000";
-    const filmUrl = this.props.match.params.title;
+    const filmUrl = this.props.match.params.id;
     fetch(url + "/films/" + filmUrl)
       .then((res) => res.json())
       .then(

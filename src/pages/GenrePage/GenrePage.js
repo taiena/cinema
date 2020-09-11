@@ -11,7 +11,7 @@ export default class GenrePage extends Component {
 
   componentDidMount() {
     //  этот параметр (название жанра) передался при переходе по ссылке
-    const genreUrl = this.props.location.state.data;
+    let genreUrl = this.props.location.state.data;
     console.log(genreUrl);
     const url = "http://localhost:4000";
     fetch(url + "/films?genre=" + genreUrl)
