@@ -1,50 +1,13 @@
 import React, { Component } from "react";
+import ActorItem from "./ActorItem/ActorItem";
+import classes from "./ActorsList.module.scss";
 
-export default class ActorsList extends Component {
-  state = {
-    error: null,
-    isLoaded: false,
-    items: [],
-  };
-
-  componentDidMount() {
-    const url = "http://localhost:4000";
-    fetch(url + "/actors")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.actors,
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
-        }
-      );
-  }
-
-  render() {
-    const { error, isLoaded, items } = this.state;
-
-    if (error) {
-      return <p>Error {error.message}</p>;
-    } else if (!isLoaded) {
-      return <p>Loading...</p>;
-    } else {
-      return (
-        <div>
-          <h1>Actors list page</h1>
-          <ul>
-            {items.map((item) => (
-              <li key={item.id}>{item.name}</li>
-            ))}
-          </ul>
-        </div>
-      );
-    }
-  }
+export default function ActorsList(props) {
+  return (
+    <div className={classes.ActorsList}>
+      {props.items.map((item, index) => {
+        return <ActorItem name={item.name} key={index} id={item.id} />;
+      })}
+    </div>
+  );
 }

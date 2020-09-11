@@ -14,8 +14,8 @@ export default class MainMenu extends Component {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/actorslist" exact activeClassName="active">
-              Actors list
+            <NavLink to="/actors" exact activeClassName="active">
+              Actors
             </NavLink>
           </li>
         </ul>
