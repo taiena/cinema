@@ -1,0 +1,13 @@
+.GenreItem:hover {
+  color: cyan;
+  cursor: pointer;
+}
+
+.GenreItem:active {
+  color: magenta;
+  cursor: pointer;
+}
+
+.GenreItem {
+  color: blue;
+}

@@ -17,9 +17,10 @@ function App() {
         <main>
           <Switch>
             <Route path={"/"} exact component={Main} />
-            <Route path={"/genrepage"} exact component={GenrePage} />
+            {/* <Route path={"/genrepage"} exact component={GenrePage} /> */}
             <Route path={"/actorslist"} exact component={ActorsList} />
             <Route path={"/movies/:id"} exact component={MoviePage} />
+            <Route path={"/genres/:name"} exact component={GenrePage} />
 
             <Redirect to={"/"} />
           </Switch>

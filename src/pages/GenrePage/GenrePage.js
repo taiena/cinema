@@ -11,7 +11,8 @@ export default class GenrePage extends Component {
 
   componentDidMount() {
     //  этот параметр (название жанра) передался при переходе по ссылке
-    let genreUrl = this.props.location.state.data;
+    // let genreUrl = this.props.location.state.data;
+    const genreUrl = this.props.match.params.name;
     console.log(genreUrl);
     const url = "http://localhost:4000";
     fetch(url + "/films?genre=" + genreUrl)
@@ -41,7 +42,8 @@ export default class GenrePage extends Component {
     } else {
       return (
         <div className={classes.GenrePage}>
-          <h1>{this.props.location.state.data}</h1>
+          {/* <h1>{this.props.location.state.data}</h1> */}
+          <h1>{this.props.match.params.name}</h1>
           <MovieList items={items} />
         </div>
       );
