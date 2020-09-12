@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import ActorItem from "./ActorItem/ActorItem";
 import classes from "./ActorsList.module.scss";
 

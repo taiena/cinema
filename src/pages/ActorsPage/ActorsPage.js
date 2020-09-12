@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import classes from "./ActorsPage.module.scss";
 import ActorsList from "../../components/ActorsList/ActorsList";
+import Pagination from "../../components/UI/Pagination/Pagination";
 
 export default class ActorsPage extends Component {
   state = {
     error: null,
     isLoaded: false,
     items: [],
+    pages: [1, 2, 3],
   };
 
   componentDidMount() {
@@ -30,7 +32,7 @@ export default class ActorsPage extends Component {
   }
 
   render() {
-    const { error, isLoaded, items } = this.state;
+    const { error, isLoaded, items, pages } = this.state;
 
     if (error) {
       return <p>Error {error.message}</p>;
@@ -40,6 +42,7 @@ export default class ActorsPage extends Component {
       return (
         <div className={classes.ActorsPage}>
           <h1>Actors page</h1>
+          <Pagination pages={pages} />
           <ActorsList items={items} />
         </div>
       );
