@@ -8,12 +8,22 @@ export default function MainMenu() {
       <h3>MainMenu</h3>
       <ul>
         <li>
-          <NavLink to="/" exact activeClassName="active">
+          <NavLink
+            to="/"
+            exact
+            activeClassName="active"
+            className={classes.MenuItem}
+          >
             Main
           </NavLink>
         </li>
         <li>
-          <NavLink to="/actors" exact activeClassName="active">
+          <NavLink
+            to="/actors"
+            exact
+            activeClassName="active"
+            className={classes.MenuItem}
+          >
             Actors
           </NavLink>
         </li>

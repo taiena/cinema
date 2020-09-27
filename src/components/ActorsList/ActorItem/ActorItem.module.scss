@@ -1,5 +1,7 @@
+@import "../../../scss/vars";
+
 .ActorItem:hover {
-  background-color: #d9f5d2;
+  background-color: $color-main-active;
   cursor: pointer;
 }
 
@@ -8,5 +10,5 @@
   padding: 10px;
   margin: 0 auto;
   margin-bottom: 10px;
-  background-color: #e2e2e2;
+  background-color: $color-main-light;
 }

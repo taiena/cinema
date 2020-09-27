@@ -1,3 +1,15 @@
+@import "../../scss/vars";
+
 .MainMenu {
-  background-color: rgb(250, 214, 242);
+  background-color: $color-second;
+}
+
+.MenuItem:hover {
+  color: $color-main;
+  cursor: pointer;
+}
+
+.MenuItem:active {
+  color: $color-main-light;
+  cursor: pointer;
 }

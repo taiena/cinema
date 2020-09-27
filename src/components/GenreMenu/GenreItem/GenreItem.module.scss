@@ -1,13 +1,11 @@
+@import "../../../scss/vars";
+
 .GenreItem:hover {
-  color: cyan;
+  color: $color-main;
   cursor: pointer;
 }
 
 .GenreItem:active {
-  color: magenta;
+  color: $color-second;
   cursor: pointer;
-}
-
-.GenreItem {
-  color: blue;
 }
