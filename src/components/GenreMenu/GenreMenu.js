@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import classes from "./GenreMenu.module.scss";
 import GenreItem from "./GenreItem/GenreItem";
+import * as axios from "axios";
 
 export default class GenreMenu extends Component {
   state = {
@@ -9,13 +10,12 @@ export default class GenreMenu extends Component {
 
   componentDidMount() {
     const url = "http://localhost:4000";
-    fetch(url + "/genres")
-      .then((res) => res.json())
-      .then((result) => {
-        this.setState({
-          items: result.genres,
-        });
+
+    axios.get(url + "/genres").then((response) => {
+      this.setState({
+        items: response.data.genres,
       });
+    });
   }
 
   render() {
