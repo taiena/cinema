@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Main from "./pages/Main/Main";
 import GenrePage from "./pages/GenrePage/GenrePage";
-import ActorsPage from "./pages/ActorsPage/ActorsPage";
-import ActorPage from "./pages/ActorPage/ActorPage";
+import ActorsPageContainer from "./pages/ActorsPage/ActorsPageContainer";
+import ActorPageContainer from "./pages/ActorPage/ActorPageContainer";
 import MoviePage from "./pages/MoviePage/MoviePage";
 
 function App() {
@@ -18,8 +18,8 @@ function App() {
         <main>
           <Switch>
             <Route path={"/"} exact component={Main} />
-            <Route path={"/actors"} exact component={ActorsPage} />
-            <Route path={"/actors/:id"} exact component={ActorPage} />
+            <Route path={"/actors"} exact component={ActorsPageContainer} />
+            <Route path={"/actors/:id"} exact component={ActorPageContainer} />
             <Route path={"/movies/:id"} exact component={MoviePage} />
             <Route path={"/genres/:name"} exact component={GenrePage} />
 
