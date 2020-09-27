@@ -6,7 +6,7 @@ import MainContainer from "./pages/Main/MainContainer";
 import GenrePageContainer from "./pages/GenrePage/GenrePageContainer";
 import ActorsPageContainer from "./pages/ActorsPage/ActorsPageContainer";
 import ActorPageContainer from "./pages/ActorPage/ActorPageContainer";
-import MoviePage from "./pages/MoviePage/MoviePage";
+import MoviePageContainer from "./pages/MoviePage/MoviePageContainer";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
             <Route path={"/"} exact component={MainContainer} />
             <Route path={"/actors"} exact component={ActorsPageContainer} />
             <Route path={"/actors/:id"} exact component={ActorPageContainer} />
-            <Route path={"/movies/:id"} exact component={MoviePage} />
+            <Route path={"/movies/:id"} exact component={MoviePageContainer} />
             <Route
               path={"/genres/:name"}
               exact
