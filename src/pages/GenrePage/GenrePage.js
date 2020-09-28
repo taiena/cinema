@@ -6,7 +6,7 @@ export default function GenrePage(props) {
   return (
     <div className={classes.GenrePage}>
       <h1>{props.genreUrl}</h1>
-      <MovieList items={props.items} />
+      <MovieList films={props.films} />
     </div>
   );
 }

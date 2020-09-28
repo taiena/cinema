@@ -1,29 +1,28 @@
 import React, { Component } from "react";
 import * as axios from "axios";
 import Main from "./Main";
+import { setFilms } from "../../redux/mainReducer";
+import { connect } from "react-redux";
 
-export default class MainContainer extends Component {
-  state = {
-    items: [],
-  };
-
+class MainContainer extends Component {
   componentDidMount() {
     const url = "http://localhost:4000";
     axios.get(url + "/films").then((response) => {
-      this.setState({
-        items: response.data.films,
-      });
+      this.props.setFilms(response.data.films);
     });
   }
 
   render() {
-    const { items } = this.state;
-
-    return (
-      <div>
-        <h1>main container</h1>
-        <Main items={items} />
-      </div>
-    );
+    return <Main films={this.props.films} />;
   }
 }
+
+let mapStateToProps = (state) => {
+  return {
+    films: state.mainPage.films,
+  };
+};
+
+export default connect(mapStateToProps, {
+  setFilms,
+})(MainContainer);

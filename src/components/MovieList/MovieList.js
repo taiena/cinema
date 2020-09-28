@@ -4,14 +4,14 @@ import MovieItem from "./MovieItem/MovieItem";
 export default function MovieList(props) {
   return (
     <div>
-      {props.items.map((item, index) => {
+      {props.films.map((film, index) => {
         return (
           <MovieItem
-            title={item.title}
-            title_original={item.title_original}
-            production_year={item.production_year}
+            title={film.title}
+            title_original={film.title_original}
+            production_year={film.production_year}
             key={index}
-            id={item.id}
+            id={film.id}
           />
         );
       })}

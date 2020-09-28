@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import * as axios from "axios";
 import GenrePage from "./GenrePage";
+import { setFilms } from "../../redux/genreReducer";
+import { connect } from "react-redux";
 
-export default class GenrePageContainer extends Component {
+class GenrePageContainer extends Component {
   state = {
-    items: [],
     genreUrl: this.props.match.params.name,
   };
 
   componentDidMount() {
     const url = "http://localhost:4000";
     axios.get(url + "/films?genre=" + this.state.genreUrl).then((response) => {
-      this.setState({
-        items: response.data.films,
-      });
+      this.props.setFilms(response.data.films);
     });
   }
 
@@ -24,21 +23,26 @@ export default class GenrePageContainer extends Component {
         .get(url + "/films?genre=" + this.state.genreUrl)
         .then((response) => {
           this.setState({
-            items: response.data.films,
             genreUrl: this.props.match.params.name,
           });
+          this.props.setFilms(response.data.films);
         });
     }
   }
 
   render() {
-    const { items, genreUrl } = this.state;
+    const { genreUrl } = this.state;
 
-    return (
-      <div>
-        <h1>Genrepage container</h1>
-        <GenrePage items={items} genreUrl={genreUrl} />
-      </div>
-    );
+    return <GenrePage films={this.props.films} genreUrl={genreUrl} />;
   }
 }
+
+let mapStateToProps = (state) => {
+  return {
+    films: state.genrePage.films,
+  };
+};
+
+export default connect(mapStateToProps, {
+  setFilms,
+})(GenrePageContainer);
