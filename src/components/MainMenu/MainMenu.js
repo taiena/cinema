@@ -9,7 +9,7 @@ export default function MainMenu() {
       <ul>
         <li>
           <NavLink
-            to="/"
+            to="/main"
             exact
             activeClassName="active"
             className={classes.MenuItem}

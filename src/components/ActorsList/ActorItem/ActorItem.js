@@ -1,16 +1,15 @@
 import React from "react";
 import classes from "./ActorItem.module.scss";
-import { withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 let ActorItem = (props) => {
   return (
-    <div
-      className={classes.ActorItem}
-      onClick={() => props.history.push("/actors/" + props.id)}
-    >
-      <h3>Актер: {props.name}</h3>
+    <div className={classes.ActorItem}>
+      <NavLink to={"/actors/" + props.id}>
+        <h3>Актер: {props.name}</h3>
+      </NavLink>
     </div>
   );
 };
 
-export default withRouter(ActorItem);
+export default ActorItem;
