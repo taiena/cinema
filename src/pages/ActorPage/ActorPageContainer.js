@@ -10,8 +10,6 @@ class ActorPageContainer extends Component {
     const url = "http://localhost:4000";
     let actorId = this.props.match.params.id;
 
-    console.log("actor id: " + actorId);
-
     axios.get(url + "/actors/" + actorId).then((response) => {
       this.props.setActor(response.data);
     });
