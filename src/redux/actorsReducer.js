@@ -1,9 +1,13 @@
 const SET_ACTORS = "SET_ACTORS";
 const TOGGLE_IS_LOADING = "TOGGLE_IS_LOADING";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_TOTAL_PAGES_COUNT = "SET_TOTAL_PAGES_COUNT";
 
 let initialState = {
   actors: [],
   isLoading: false,
+  currentPage: 3,
+  totalPagesCount: null,
 };
 
 const actorsReducer = (state = initialState, action) => {
@@ -20,6 +24,20 @@ const actorsReducer = (state = initialState, action) => {
         isLoading: action.isLoading,
       };
 
+    // переключить страницу
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.currentPage,
+      };
+
+    // добавить в стейт кол-во актеров
+    case SET_TOTAL_PAGES_COUNT:
+      return {
+        ...state,
+        totalPagesCount: action.count,
+      };
+
     default:
       return state;
   }
@@ -29,6 +47,14 @@ export const setActors = (actors) => ({ type: SET_ACTORS, actors });
 export const toggleIsLoading = (isLoading) => ({
   type: TOGGLE_IS_LOADING,
   isLoading,
+});
+export const setCurrentPage = (currentPage) => ({
+  type: SET_CURRENT_PAGE,
+  currentPage,
+});
+export const setTotalPagesCount = (totalPagesCount) => ({
+  type: SET_TOTAL_PAGES_COUNT,
+  count: totalPagesCount,
 });
 
 export default actorsReducer;
