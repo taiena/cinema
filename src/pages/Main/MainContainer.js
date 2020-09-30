@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 class MainContainer extends Component {
   componentDidMount() {
     const url = "http://localhost:4000";
-    axios.get(url + "/films").then((response) => {
+    axios.get(url + "/films/").then((response) => {
       this.props.setFilms(response.data.films);
     });
   }

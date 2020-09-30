@@ -1,30 +1,33 @@
 import React, { Component } from "react";
 import * as axios from "axios";
 import MoviePage from "./MoviePage";
+import { setFilm } from "../../redux/movieReducer";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
-export default class MoviePageContainer extends Component {
-  state = {
-    item: {},
-  };
-
+class MoviePageContainer extends Component {
   componentDidMount() {
     const url = "http://localhost:4000";
-    const filmUrl = this.props.match.params.id;
+    let filmId = this.props.match.params.id;
 
-    axios.get(url + "/films/" + filmUrl).then((response) => {
-      this.setState({
-        item: response.data.film,
-      });
+    axios.get(url + "/films/" + filmId).then((response) => {
+      this.props.setFilm(response.data);
     });
   }
-  render() {
-    const { item } = this.state;
 
-    return (
-      <div>
-        <h1>Movie page container</h1>
-        <MoviePage item={item} />
-      </div>
-    );
+  render() {
+    return <MoviePage {...this.props} film={this.props.film} />;
   }
 }
+
+let mapStateToProps = (state) => {
+  return {
+    film: state.moviePage.film,
+  };
+};
+
+let WithUrlDataContainerComponent = withRouter(MoviePageContainer);
+
+export default connect(mapStateToProps, {
+  setFilm,
+})(WithUrlDataContainerComponent);

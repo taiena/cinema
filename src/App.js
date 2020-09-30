@@ -19,7 +19,7 @@ const App = (props) => {
           <Route path={"/main"} render={() => <MainContainer />} />
           <Route path={"/actors"} exact component={ActorsPageContainer} />
           <Route path={"/actors/:id"} exact component={ActorPageContainer} />
-          <Route path={"/movies/:id"} exact component={MoviePageContainer} />
+          <Route path={"/films/:id"} exact component={MoviePageContainer} />
           <Route path={"/genres/:name"} exact component={GenrePageContainer} />
 
           <Redirect to={"/main"} />

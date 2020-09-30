@@ -1,11 +1,20 @@
 import React from "react";
+import classes from "./MoviePage.module.scss";
 
-export default function MoviePage(props) {
+let MoviePage = (props) => {
+  console.log(props);
+  if (!props.film) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div>
+    <div className={classes.MoviePage}>
       <h1>Movie page</h1>
-      <h2>{props.item.title}</h2>
-      <div>{props.item.production_year}</div>
+      <h2>params id: {props.match.params.id}</h2>
+      <h2>film name: {props.film.film.title}</h2>
+      <h2>film id: {props.film.film.id}</h2>
     </div>
   );
-}
+};
+
+export default MoviePage;

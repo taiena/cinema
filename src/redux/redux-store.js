@@ -4,6 +4,7 @@ import genreReducer from "./genreReducer";
 import genreMenuReducer from "./genreMenuReducer";
 import actorsReducer from "./actorsReducer";
 import actorReducer from "./actorReducer";
+import movieReducer from "./movieReducer";
 
 let reducers = combineReducers({
   mainPage: mainReducer,
@@ -11,6 +12,7 @@ let reducers = combineReducers({
   genreMenu: genreMenuReducer,
   actorsPage: actorsReducer,
   actorPage: actorReducer,
+  moviePage: movieReducer,
 });
 
 let store = createStore(reducers);
