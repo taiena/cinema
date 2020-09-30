@@ -1,10 +1,11 @@
 import React from "react";
 import classes from "./MoviePage.module.scss";
+import Preloader from "../../components/UI/Preloader/Preloader";
 
 let MoviePage = (props) => {
   console.log(props);
   if (!props.film) {
-    return <div>Loading...</div>;
+    return <Preloader />;
   }
 
   return (

@@ -3,6 +3,7 @@ import * as axios from "axios";
 import ActorsPage from "./ActorsPage";
 import { setActors, toggleIsLoading } from "../../redux/actorsReducer";
 import { connect } from "react-redux";
+import Preloader from "../../components/UI/Preloader/Preloader";
 
 class ActorsPageContainer extends Component {
   componentDidMount() {
@@ -18,7 +19,7 @@ class ActorsPageContainer extends Component {
     return (
       <>
         {this.props.isLoading ? (
-          <div>Loading...</div>
+          <Preloader />
         ) : (
           <ActorsPage actors={this.props.actors} />
         )}

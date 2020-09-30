@@ -1,10 +1,11 @@
 import React from "react";
 import classes from "./ActorPage.module.scss";
+import Preloader from "../../components/UI/Preloader/Preloader";
 
 let ActorPage = (props) => {
   console.log(props);
   if (!props.actor) {
-    return <div>Loading...</div>;
+    return <Preloader />;
   }
 
   return (
