@@ -6,7 +6,7 @@ const SET_TOTAL_PAGES_COUNT = "SET_TOTAL_PAGES_COUNT";
 let initialState = {
   actors: [],
   isLoading: false,
-  currentPage: 3,
+  currentPage: 1,
   totalPagesCount: null,
 };
 
