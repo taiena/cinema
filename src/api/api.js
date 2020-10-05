@@ -47,3 +47,11 @@ export const actorAPI = {
     });
   },
 };
+
+export const genresAPI = {
+  getGenres() {
+    return instance.get(`genres`).then((response) => {
+      return response.data;
+    });
+  },
+};
