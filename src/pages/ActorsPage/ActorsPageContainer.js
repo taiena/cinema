@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import * as axios from "axios";
 import ActorsPage from "./ActorsPage";
 import {
   setActors,
@@ -9,30 +8,28 @@ import {
 } from "../../redux/actorsReducer";
 import { connect } from "react-redux";
 import Preloader from "../../components/UI/Preloader/Preloader";
+import { actorsAPI } from "../../api/api";
 
 class ActorsPageContainer extends Component {
   componentDidMount() {
     this.props.toggleIsLoading(true);
-    const url = "http://localhost:4000";
 
-    axios
-      .get(`${url}/actors?page=${this.props.currentPage}`)
-      .then((response) => {
-        this.props.toggleIsLoading(false);
-        this.props.setActors(response.data.actors);
-        this.props.setTotalPagesCount(response.data.meta.total_pages);
-        this.props.setCurrentPage(response.data.meta.current_page);
-      });
+    actorsAPI.getActors(this.props.currentPage).then((data) => {
+      this.props.toggleIsLoading(false);
+      this.props.setActors(data.actors);
+      this.props.setTotalPagesCount(data.meta.total_pages);
+      this.props.setCurrentPage(data.meta.current_page);
+    });
   }
 
   // при клике на номер страницы новый запрос апи
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber);
     this.props.toggleIsLoading(true);
-    const url = "http://localhost:4000";
-    axios.get(`${url}/actors?page=${pageNumber}`).then((response) => {
+
+    actorsAPI.getActors(pageNumber).then((data) => {
       this.props.toggleIsLoading(false);
-      this.props.setActors(response.data.actors);
+      this.props.setActors(data.actors);
     });
   };
 

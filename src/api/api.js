@@ -23,3 +23,11 @@ export const filmsGenreAPI = {
     });
   },
 };
+
+export const actorsAPI = {
+  getActors(currentPage = 1) {
+    return instance.get(`actors?page=${currentPage}`).then((response) => {
+      return response.data;
+    });
+  },
+};
