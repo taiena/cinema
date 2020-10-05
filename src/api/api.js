@@ -31,3 +31,19 @@ export const actorsAPI = {
     });
   },
 };
+
+export const filmAPI = {
+  getFilm(filmId) {
+    return instance.get("films/" + filmId).then((response) => {
+      return response.data;
+    });
+  },
+};
+
+export const actorAPI = {
+  getActor(actorId) {
+    return instance.get("actors/" + actorId).then((response) => {
+      return response.data;
+    });
+  },
+};

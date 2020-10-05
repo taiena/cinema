@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-import * as axios from "axios";
 import ActorPage from "./ActorPage";
 import { setActor } from "../../redux/actorReducer";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { actorAPI } from "../../api/api";
 
 class ActorPageContainer extends Component {
   componentDidMount() {
-    const url = "http://localhost:4000";
     let actorId = this.props.match.params.id;
 
-    axios.get(url + "/actors/" + actorId).then((response) => {
-      this.props.setActor(response.data);
+    actorAPI.getActor(actorId).then((data) => {
+      this.props.setActor(data);
     });
   }
 
