@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import * as axios from "axios";
 import GenrePage from "./GenrePage";
 import {
   setFilms,
@@ -8,30 +7,29 @@ import {
 } from "../../redux/genreReducer";
 import { connect } from "react-redux";
 import Preloader from "../../components/UI/Preloader/Preloader";
+import { filmsGenreAPI } from "../../api/api";
 
 class GenrePageContainer extends Component {
   componentDidMount() {
     this.props.toggleIsLoading(true);
-    const url = "http://localhost:4000";
-    axios
-      .get(url + "/films?genre=" + this.props.match.params.name)
-      .then((response) => {
-        this.props.toggleIsLoading(false);
-        this.props.setFilms(response.data.films);
-      });
+    const genreUrl = this.props.match.params.name;
+
+    filmsGenreAPI.getFilmsGenre(genreUrl).then((data) => {
+      this.props.toggleIsLoading(false);
+      this.props.setFilms(data.films);
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.genreUrl !== this.props.match.params.name) {
+    const genreUrl = this.props.match.params.name;
+    if (prevProps.genreUrl !== genreUrl) {
       this.props.toggleIsLoading(true);
-      const url = "http://localhost:4000";
-      axios
-        .get(url + "/films?genre=" + this.props.match.params.name)
-        .then((response) => {
-          this.props.toggleIsLoading(false);
-          this.props.setGenreUrl(this.props.match.params.name);
-          this.props.setFilms(response.data.films);
-        });
+
+      filmsGenreAPI.getFilmsGenre(genreUrl).then((data) => {
+        this.props.toggleIsLoading(false);
+        this.props.setGenreUrl(genreUrl);
+        this.props.setFilms(data.films);
+      });
     }
   }
 

@@ -31,7 +31,7 @@ const actorsReducer = (state = initialState, action) => {
         currentPage: action.currentPage,
       };
 
-    // добавить в стейт кол-во актеров
+    // добавить в стейт кол-во страниц
     case SET_TOTAL_PAGES_COUNT:
       return {
         ...state,

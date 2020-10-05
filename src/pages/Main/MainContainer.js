@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import * as axios from "axios";
 import Main from "./Main";
 import { setFilms, toggleIsLoading } from "../../redux/mainReducer";
 import { connect } from "react-redux";
 import Preloader from "../../components/UI/Preloader/Preloader";
+import { filmsAPI } from "../../api/api";
 
 class MainContainer extends Component {
   componentDidMount() {
     this.props.toggleIsLoading(true);
-    const url = "http://localhost:4000";
-    axios.get(url + "/films/").then((response) => {
+
+    filmsAPI.getFilms().then((data) => {
       this.props.toggleIsLoading(false);
-      this.props.setFilms(response.data.films);
+      this.props.setFilms(data.films);
     });
   }
 
