@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import MoviePage from "./MoviePage";
-import { setFilm } from "../../redux/movieReducer";
+import { getFilm } from "../../redux/movieReducer";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { filmAPI } from "../../api/api";
 
 class MoviePageContainer extends Component {
   componentDidMount() {
     let filmId = this.props.match.params.id;
 
-    filmAPI.getFilm(filmId).then((data) => {
-      this.props.setFilm(data);
-    });
+    this.props.getFilm(filmId);
   }
 
   render() {
@@ -28,5 +25,5 @@ let mapStateToProps = (state) => {
 let WithUrlDataContainerComponent = withRouter(MoviePageContainer);
 
 export default connect(mapStateToProps, {
-  setFilm,
+  getFilm,
 })(WithUrlDataContainerComponent);

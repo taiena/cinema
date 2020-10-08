@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import ActorPage from "./ActorPage";
-import { setActor } from "../../redux/actorReducer";
+import { getActor } from "../../redux/actorReducer";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { actorAPI } from "../../api/api";
 
 class ActorPageContainer extends Component {
   componentDidMount() {
     let actorId = this.props.match.params.id;
 
-    actorAPI.getActor(actorId).then((data) => {
-      this.props.setActor(data);
-    });
+    this.props.getActor(actorId);
   }
 
   render() {
@@ -28,5 +25,5 @@ let mapStateToProps = (state) => {
 let WithUrlDataContainerComponent = withRouter(ActorPageContainer);
 
 export default connect(mapStateToProps, {
-  setActor,
+  getActor,
 })(WithUrlDataContainerComponent);
