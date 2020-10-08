@@ -1,18 +1,12 @@
 import React, { Component } from "react";
 import Main from "./Main";
-import { setFilms, toggleIsLoading } from "../../redux/mainReducer";
+import { getFilms } from "../../redux/mainReducer";
 import { connect } from "react-redux";
 import Preloader from "../../components/UI/Preloader/Preloader";
-import { filmsAPI } from "../../api/api";
 
 class MainContainer extends Component {
   componentDidMount() {
-    this.props.toggleIsLoading(true);
-
-    filmsAPI.getFilms().then((data) => {
-      this.props.toggleIsLoading(false);
-      this.props.setFilms(data.films);
-    });
+    this.props.getFilms();
   }
 
   render() {
@@ -36,6 +30,5 @@ let mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  setFilms,
-  toggleIsLoading,
+  getFilms,
 })(MainContainer);

@@ -1,3 +1,5 @@
+import { filmsAPI } from "../api/api";
+
 const SET_FILMS = "SET_FILMS";
 const TOGGLE_IS_LOADING = "TOGGLE_IS_LOADING";
 
@@ -30,5 +32,17 @@ export const toggleIsLoading = (isLoading) => ({
   type: TOGGLE_IS_LOADING,
   isLoading,
 });
+
+//thunk
+export const getFilms = () => {
+  return (dispatch) => {
+    dispatch(toggleIsLoading(true));
+
+    filmsAPI.getFilms().then((data) => {
+      dispatch(toggleIsLoading(false));
+      dispatch(setFilms(data.films));
+    });
+  };
+};
 
 export default mainReducer;
