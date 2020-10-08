@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import GenreMenu from "./GenreMenu";
-import { setGenres } from "../../redux/genreMenuReducer";
+import { getGenres } from "../../redux/genreMenuReducer";
 import { connect } from "react-redux";
-import { genresAPI } from "../../api/api";
 
 class GenreMenuContainer extends Component {
   componentDidMount() {
-    genresAPI.getGenres().then((data) => {
-      this.props.setGenres(data.genres);
-    });
+    this.props.getGenres();
   }
 
   render() {
@@ -23,5 +20,5 @@ let mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  setGenres,
+  getGenres,
 })(GenreMenuContainer);

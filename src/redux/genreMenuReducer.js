@@ -1,3 +1,5 @@
+import { genresAPI } from "../api/api";
+
 const SET_GENRES = "SET_GENRES";
 
 let initialState = {
@@ -18,5 +20,14 @@ const genreMenuReducer = (state = initialState, action) => {
 };
 
 export const setGenres = (genres) => ({ type: SET_GENRES, genres });
+
+//thunk
+export const getGenres = () => {
+  return (dispatch) => {
+    genresAPI.getGenres().then((data) => {
+      dispatch(setGenres(data.genres));
+    });
+  };
+};
 
 export default genreMenuReducer;
