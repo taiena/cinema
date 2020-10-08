@@ -1,3 +1,5 @@
+import { actorsAPI } from "../api/api";
+
 const SET_ACTORS = "SET_ACTORS";
 const TOGGLE_IS_LOADING = "TOGGLE_IS_LOADING";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
@@ -56,5 +58,19 @@ export const setTotalPagesCount = (totalPagesCount) => ({
   type: SET_TOTAL_PAGES_COUNT,
   count: totalPagesCount,
 });
+
+//thunk
+export const getActors = (currentPage) => {
+  return (dispatch) => {
+    dispatch(toggleIsLoading(true));
+    dispatch(setCurrentPage(currentPage));
+
+    actorsAPI.getActors(currentPage).then((data) => {
+      dispatch(toggleIsLoading(false));
+      dispatch(setActors(data.actors));
+      dispatch(setTotalPagesCount(data.meta.total_pages));
+    });
+  };
+};
 
 export default actorsReducer;

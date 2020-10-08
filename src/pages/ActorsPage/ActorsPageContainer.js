@@ -1,36 +1,17 @@
 import React, { Component } from "react";
 import ActorsPage from "./ActorsPage";
-import {
-  setActors,
-  toggleIsLoading,
-  setCurrentPage,
-  setTotalPagesCount,
-} from "../../redux/actorsReducer";
+import { getActors } from "../../redux/actorsReducer";
 import { connect } from "react-redux";
 import Preloader from "../../components/UI/Preloader/Preloader";
-import { actorsAPI } from "../../api/api";
 
 class ActorsPageContainer extends Component {
   componentDidMount() {
-    this.props.toggleIsLoading(true);
-
-    actorsAPI.getActors(this.props.currentPage).then((data) => {
-      this.props.toggleIsLoading(false);
-      this.props.setActors(data.actors);
-      this.props.setTotalPagesCount(data.meta.total_pages);
-      this.props.setCurrentPage(data.meta.current_page);
-    });
+    this.props.getActors(this.props.currentPage);
   }
 
   // при клике на номер страницы новый запрос апи
   onPageChanged = (pageNumber) => {
-    this.props.setCurrentPage(pageNumber);
-    this.props.toggleIsLoading(true);
-
-    actorsAPI.getActors(pageNumber).then((data) => {
-      this.props.toggleIsLoading(false);
-      this.props.setActors(data.actors);
-    });
+    this.props.getActors(pageNumber);
   };
 
   render() {
@@ -61,8 +42,5 @@ let mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  setActors,
-  toggleIsLoading,
-  setCurrentPage,
-  setTotalPagesCount,
+  getActors,
 })(ActorsPageContainer);
