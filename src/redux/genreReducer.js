@@ -1,3 +1,5 @@
+import { filmsGenreAPI } from "../api/api";
+
 const SET_FILMS = "SET_FILMS";
 const TOGGLE_IS_LOADING = "TOGGLE_IS_LOADING";
 const SET_GENRE_URL = "SET_GENRE_URL";
@@ -43,5 +45,18 @@ export const setGenreUrl = (genreUrl) => ({
   type: SET_GENRE_URL,
   genreUrl,
 });
+
+//thunk
+export const getFilmsGenre = (genreUrl) => {
+  return (dispatch) => {
+    dispatch(toggleIsLoading(true));
+
+    filmsGenreAPI.getFilmsGenre(genreUrl).then((data) => {
+      dispatch(toggleIsLoading(false));
+      dispatch(setFilms(data.films));
+      dispatch(setGenreUrl(genreUrl));
+    });
+  };
+};
 
 export default genreReducer;
