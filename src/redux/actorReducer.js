@@ -23,10 +23,10 @@ export const setActor = (actor) => ({ type: SET_ACTOR, actor });
 
 //thunk
 export const getActor = (actorId) => {
-  return (dispatch) => {
-    actorAPI.getActor(actorId).then((data) => {
-      dispatch(setActor(data));
-    });
+  return async (dispatch) => {
+    let response = await actorAPI.getActor(actorId);
+
+    dispatch(setActor(response.data));
   };
 };
 

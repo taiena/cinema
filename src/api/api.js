@@ -10,48 +10,36 @@ const instance = axios.create({
 
 export const filmsAPI = {
   getFilms() {
-    return instance.get(`films/`).then((response) => {
-      return response.data;
-    });
+    return instance.get(`films/`);
   },
 };
 
 export const filmsGenreAPI = {
   getFilmsGenre(genreUrl) {
-    return instance.get(`films?genre=` + genreUrl).then((response) => {
-      return response.data;
-    });
+    return instance.get(`films?genre=` + genreUrl);
   },
 };
 
 export const actorsAPI = {
   getActors(currentPage = 1) {
-    return instance.get(`actors?page=${currentPage}`).then((response) => {
-      return response.data;
-    });
+    return instance.get(`actors?page=${currentPage}`);
   },
 };
 
 export const filmAPI = {
   getFilm(filmId) {
-    return instance.get("films/" + filmId).then((response) => {
-      return response.data;
-    });
+    return instance.get("films/" + filmId);
   },
 };
 
 export const actorAPI = {
   getActor(actorId) {
-    return instance.get("actors/" + actorId).then((response) => {
-      return response.data;
-    });
+    return instance.get("actors/" + actorId);
   },
 };
 
 export const genresAPI = {
   getGenres() {
-    return instance.get(`genres`).then((response) => {
-      return response.data;
-    });
+    return instance.get(`genres`);
   },
 };

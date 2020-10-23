@@ -23,10 +23,10 @@ export const setFilm = (film) => ({ type: SET_FILM, film });
 
 //thunk
 export const getFilm = (filmId) => {
-  return (dispatch) => {
-    filmAPI.getFilm(filmId).then((data) => {
-      dispatch(setFilm(data));
-    });
+  return async (dispatch) => {
+    let response = await filmAPI.getFilm(filmId);
+
+    dispatch(setFilm(response.data));
   };
 };
 

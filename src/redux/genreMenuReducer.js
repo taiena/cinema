@@ -23,10 +23,10 @@ export const setGenres = (genres) => ({ type: SET_GENRES, genres });
 
 //thunk
 export const getGenres = () => {
-  return (dispatch) => {
-    genresAPI.getGenres().then((data) => {
-      dispatch(setGenres(data.genres));
-    });
+  return async (dispatch) => {
+    let response = await genresAPI.getGenres();
+
+    dispatch(setGenres(response.data.genres));
   };
 };
 

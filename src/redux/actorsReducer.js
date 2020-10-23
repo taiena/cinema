@@ -61,15 +61,15 @@ export const setTotalPagesCount = (totalPagesCount) => ({
 
 //thunk
 export const getActors = (currentPage) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(toggleIsLoading(true));
     dispatch(setCurrentPage(currentPage));
 
-    actorsAPI.getActors(currentPage).then((data) => {
-      dispatch(toggleIsLoading(false));
-      dispatch(setActors(data.actors));
-      dispatch(setTotalPagesCount(data.meta.total_pages));
-    });
+    let response = await actorsAPI.getActors(currentPage);
+
+    dispatch(toggleIsLoading(false));
+    dispatch(setActors(response.data.actors));
+    dispatch(setTotalPagesCount(response.data.meta.total_pages));
   };
 };
 

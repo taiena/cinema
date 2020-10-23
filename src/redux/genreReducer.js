@@ -48,14 +48,14 @@ export const setGenreUrl = (genreUrl) => ({
 
 //thunk
 export const getFilmsGenre = (genreUrl) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(toggleIsLoading(true));
 
-    filmsGenreAPI.getFilmsGenre(genreUrl).then((data) => {
-      dispatch(toggleIsLoading(false));
-      dispatch(setFilms(data.films));
-      dispatch(setGenreUrl(genreUrl));
-    });
+    let response = await filmsGenreAPI.getFilmsGenre(genreUrl);
+
+    dispatch(toggleIsLoading(false));
+    dispatch(setFilms(response.data.films));
+    dispatch(setGenreUrl(genreUrl));
   };
 };
 

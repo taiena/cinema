@@ -35,12 +35,12 @@ export const toggleIsLoading = (isLoading) => ({
 
 //thunk
 export const getFilms = () => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(toggleIsLoading(true));
 
-    filmsAPI.getFilms().then((data) => {
+    let response = await filmsAPI.getFilms().then((response) => {
       dispatch(toggleIsLoading(false));
-      dispatch(setFilms(data.films));
+      dispatch(setFilms(response.data.films));
     });
   };
 };
